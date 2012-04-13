@@ -1,0 +1,16 @@
+
+
+/* JS help */
+
+//Dela upp i olika paket
+
+
+//Common
+isset
+is_x
+settimeout(time, func)
+foreach(data, function(k, v)) {
+}
+log() //Som i botis
+random(min, max)
+linkify
