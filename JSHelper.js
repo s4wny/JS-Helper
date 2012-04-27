@@ -1,4 +1,27 @@
 //-------------------------------------------------------------------------
+// Global vars
+//-------------------------------------------------------------------------
+
+//Regexp
+regexp = {};
+regexp.url = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim; //Thx to http://stackoverflow.com/a/2166104/996028
+
+
+//-------------------------------------------------------------------------
+// Extract url
+//
+// Returns all URLs in a string.
+//
+//-------------------------------------------------------------------------
+
+function extractUrl(str)
+{
+    return str.match(regexp.url);
+}
+
+
+
+//-------------------------------------------------------------------------
 // IsX
 //
 // Self explaning. 
@@ -82,7 +105,7 @@ String.prototype.linkify = function(specialRule)
     text = this;
 	
     //URLs starting with http://, https://, or ftp://
-    text = text.replace(/(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim,
+    text = text.replace(regexp.url,
                             '<a href="$1" target="_blank">$1</a>');
     
     //URLs starting with www. (without // before it, or it'd re-link the ones done above)
