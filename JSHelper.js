@@ -7,6 +7,53 @@ regexp = {};
 regexp.url = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim; //Thx to http://stackoverflow.com/a/2166104/996028
 
 
+
+
+
+//-------------------------------------------------------------------------
+// Cookie functions
+//
+// Set, read and delete cookies.
+//
+// For more deep information see @link http://www.quirksmode.org/js/cookies.html
+//
+// @example createCookie("chocolateCookie", "mm tasy cookiiieee", "7"); ->
+//    Create a cookie named "chocolateCookie" with the value "mm tasy cookiiieee" that expires after 7 days
+// @example @link http://www.quirksmode.org/js/cookies.html
+//
+// @author http://www.quirksmode.org/js/cookies.html
+//-------------------------------------------------------------------------
+
+function createCookie(name, value, days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function eraseCookie(name) {
+	createCookie(name,"",-1);
+}
+
+function deleteCookie(name) { eraseCookie(name); }
+
+
+
+
 //-------------------------------------------------------------------------
 // Extract url
 //
@@ -26,6 +73,9 @@ function extractUrl(str)
 String.prototype.extractUrl = extractUrl() {
     extractUrl(this);
 }
+
+
+
 
 
 //-------------------------------------------------------------------------
