@@ -70,7 +70,7 @@ function extractUrl(str)
     return str.match(regexp.url);
 }
 
-String.prototype.extractUrl = extractUrl() {
+String.prototype.extractUrl = function() {
     extractUrl(this);
 }
 
