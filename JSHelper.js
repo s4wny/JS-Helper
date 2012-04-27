@@ -178,16 +178,16 @@ String.prototype.linkify = function(specialRule)
     //Special rules, like twitter
     //--------------------------------
     
-    if(specialRule == "twitter")
+	if(specialRule == "twitter")
 	{
-        //@replays
+	    //@replays
         text = text.replace(/@([^ "\t\n\r<:]*)/gi,
-    	                    '<a href="http://www.twitter.com/$1" target="_blank" >@$1</a>');
-     
-    	//#hash tags
-        text = text.replace(/#([^ "\t\n\r<\]\[]*)/gi,
-    	                    '<a href="http://www.twitter.com/search/$1" target="_blank" >#$1</a>');
-    }
+		                    '<a class="replay" href="http://www.twitter.com/$1" target="_blank" >@$1</a>');
+ 	 
+    	//Tags
+	    text = text.replace(/#([^ "\t\n\r<\]\[]*)/gi,
+		                    '<a class="tag" href="http://www.twitter.com/search/$1" target="_blank" >#$1</a>');
+	}
     
     
     return text;
