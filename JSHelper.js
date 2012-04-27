@@ -12,6 +12,10 @@ regexp.url = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|
 //
 // Returns all URLs in a string.
 //
+// @example extractUrl("some text http://link.com yeah") ->
+//    ["http://link.com"]
+// @example "other text http://link.com yeah ftp://whoo.org".extractUrl; ->
+//    ["http://link.com", "ftp://whoo.org"]
 //-------------------------------------------------------------------------
 
 function extractUrl(str)
@@ -19,6 +23,9 @@ function extractUrl(str)
     return str.match(regexp.url);
 }
 
+String.prototype.extractUrl = extractUrl() {
+    extractUrl(this);
+}
 
 
 //-------------------------------------------------------------------------
