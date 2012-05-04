@@ -21,6 +21,7 @@ regexp.url = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|
 // @example log(something, "warn") = console.warn(something)
 //
 // @author Sony? aka Sawny @4morefun.net
+//     also thx to Mister Lucky @ http://stackoverflow.com/a/690300/996028
 //-------------------------------------------------------------------------
 
 
