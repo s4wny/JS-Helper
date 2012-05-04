@@ -9,6 +9,53 @@ regexp.url = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|
 
 
 
+//-------------------------------------------------------------------------
+// Log - Log things to console
+//
+// Shorthands for console.log, console.warn, console.error. Also dosen't
+// crash IE. (Is this good or bad? hmm)
+//
+// @example log(somobject) -> prints to the console (as console.log)
+// @example log(something, 1) = console.warn(something)
+// @example log(something, 2) = console.error(something)
+// @example log(something, "warn") = console.warn(something)
+//
+// @author Sony? aka Sawny @4morefun.net
+//-------------------------------------------------------------------------
+
+
+// @level = 0 (default)
+function log(msg, level)
+{
+    level = level || 0; //If level issn't set, use 0 as default.
+	
+    if('console' in self)
+	{
+	    switch(level)
+		{
+		    case 1:
+			case "warn":
+			    console.warn(msg);
+			break;
+			
+		    case 2:
+			case "error":
+			    console.error(msg);
+			break;
+			
+			default:
+			    console.log(msg);
+			break;
+		}
+	}
+	else {
+	    //IE, die silent
+	}
+    
+}
+
+
+
 
 //-------------------------------------------------------------------------
 // Cookie functions
