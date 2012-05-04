@@ -257,13 +257,22 @@ String.prototype.linkify = function(specialRule)
 //-------------------------------------------------------------------------
 
 //@author http://stackoverflow.com/a/1527820/996028
+// moded by Sony?
 function random(max, min, decimals) { //TODO: parms. (max), (min, max)
     max      = (isInt(max))       ? max      : 32767;
     min      = (isInt(min))       ? min      : 0;
     decimals = (isBool(decimals)) ? decimals : false;
     
+	//IF max and min isset, then it's more logic with "random(min TO max)"
+	//but we still wants to allow "random(max TO min)".
+	if(min > max) { //Min is bigger then max, then it should be max.
+	    max = max ^ min; 
+	    min = min ^ max; //Swap values with XOR swap. Just cuz it's cool.
+        max = max ^ min;		
+	}
+	
     if(decimals) {
-        return Math.random() * (max - min) + min
+        return Math.random() * (max - min) + min;
     }
     else {
         return Math.floor(Math.random() * (max - min + 1)) + min;
