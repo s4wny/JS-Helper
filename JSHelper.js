@@ -132,8 +132,8 @@ String.prototype.extractUrl = function() {
 // Self explaning. 
 // Note that most functions here are just shorthands for typeof x == y.
 // 
-// @Functions:         isSet, isInt, isBool, isFunc, isString, isNull, isArr
-// @TODO (functions):  isObject, isFloat, isHex, isBin
+// @Functions:         isSet, isInt, isBool, isFunc, isString, isNull, isArr, isObject
+// @TODO (functions):  isFloat, isHex, isBin
 //
 // @example is_int(17)   -> true
 // @example is_int(17.2) -> false
@@ -163,6 +163,10 @@ function isString(x) {
 //@author Sony? aka Sawny
 function isNull(x) {
     return (typeof x == "undefined") ? false : x == null;
+}
+
+function isObject (x) {
+    return x != null && typeof x === 'object';
 }
 
 
